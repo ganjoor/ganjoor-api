@@ -1,9 +1,3 @@
-import * as Bluebird from 'bluebird';
-
-if (process.env.NODE_ENV === 'development') {
-  Bluebird.config({ warnings: true, longStackTraces: true });
-}
-
 import { connect as dbConnect } from './utils/db';
 import { start as startServer, stop as stopServer } from './server';
 
