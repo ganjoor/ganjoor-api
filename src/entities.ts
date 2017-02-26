@@ -1,6 +1,8 @@
 import * as R from 'ramda';
 import CategoryModel from './models/category';
 import PoetModel from './models/poet';
+import PoemModel from './models/poem';
+import VerseModel from './models/verse';
 
 export namespace Category {
   export function findById(id: number) {
@@ -45,5 +47,21 @@ export namespace Poet {
             };
           });
       });
+  }
+}
+
+export namespace Poem {
+  export function findById(id: number) {
+    return PoemModel.findById(id, {
+      include: [{
+        model: VerseModel
+      }]
+    });
+  }
+
+  export function findAllByCategoryId(categoryId: number) {
+    return PoemModel.findAll({
+      where: { categoryId }
+    });
   }
 }

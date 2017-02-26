@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { Category, Poet } from './entities';
+import { Category, Poet, Poem } from './entities';
 
 const app = express();
 app.disable('x-powered-by');
@@ -25,6 +25,16 @@ app.get('/categories/:id', (req, res) => {
 
 app.get('/categories/byPoet/:id', (req, res) => {
   Category.findByPoetId(req.params.id)
+    .then(result => res.json(result));
+});
+
+app.get('/poems/:id', (req, res) => {
+  Poem.findById(req.params.id)
+    .then(result => res.json(result));
+});
+
+app.get('/poems/byCategory/:id', (req, res) => {
+  Poem.findAllByCategoryId(req.params.id)
     .then(result => res.json(result));
 });
 
