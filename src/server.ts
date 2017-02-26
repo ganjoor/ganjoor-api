@@ -1,11 +1,16 @@
 import * as express from 'express';
 import { Category, Poet, Poem } from './entities';
 
+let startTime: number;
+
 const app = express();
 app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
-  res.json('OK');
+  res.json({
+    health: 'OK',
+    uptime: `${Date.now() - startTime} ms`
+  });
 });
 
 app.get('/poets', (req, res) => {
@@ -42,6 +47,7 @@ let server: any;
 
 export function start(port: number) {
   return new Promise(resolve => {
+    startTime = Date.now();
     server = app.listen(port, resolve);
   });
 }
