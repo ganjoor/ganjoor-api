@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "sequelize": "registry:npm/sequelize#3.0.0+20161101121248"
+  }
+}

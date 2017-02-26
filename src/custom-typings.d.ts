@@ -1,11 +1,11 @@
-import * as Sequelize from 'sequelize'
+import * as Sequelize from 'sequelize';
 
 declare module 'sequelize' {
   interface IncludeOptions {
     hierarchy?: boolean;
   }
 
-  interface DefineOptions {
+  interface DefineOptions<TInstance> {
     hierarchy?: boolean;
   }
 }
