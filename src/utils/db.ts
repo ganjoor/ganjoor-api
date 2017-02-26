@@ -1,8 +1,10 @@
 import * as Sequelize from 'sequelize';
 require('sequelize-hierarchy')(Sequelize);
-require('dotenv').config();
 
-export const sequelize = new Sequelize('ganjoor', process.env.DB_USER, process.env.DB_PASS, {
+const DB_USER = process.env.DB_USER || 'root';
+const DB_PASS = process.env.DB_PASS || '';
+
+export const sequelize = new Sequelize('ganjoor', DB_USER, DB_PASS, {
   host: 'localhost',
   dialect: 'mysql'
 });
