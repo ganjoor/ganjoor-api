@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use(poetryRouter);
+app.use('/v1', poetryRouter);
 app.use(swaggerRouter);
 
 app.use((err: any, req: any, res: any, next: any) => {

@@ -8,7 +8,7 @@ const options = {
   swaggerDefinition: {
     info: {
       title: 'Ganjoor API',
-      version: '0.0.1'
+      version: '1.0.0'
     }
   },
   apis: ['./dist/models/*.js', './dist/*.js'],

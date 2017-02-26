@@ -5,7 +5,7 @@ export const router = express.Router();
 
 /**
  * @swagger
- * /poets:
+ * /v1/poets:
  *   get:
  *     summary: List all poets
  *     produces:
@@ -26,7 +26,7 @@ router.get('/poets', (req, res, next) => {
 
 /**
  * @swagger
- * /poets/{poetId}:
+ * /v1/poets/{poetId}:
  *   get:
  *     summary: Show a poet and it's categories
  *     produces:
@@ -53,7 +53,7 @@ router.get('/poets/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /categories/{categoryId}:
+ * /v1/categories/{categoryId}:
  *   get:
  *     summary: Show a category
  *     produces:
@@ -80,7 +80,7 @@ router.get('/categories/:categoryId', (req, res, next) => {
 
 /**
  * @swagger
- * /categories/byPoet/{poetId}:
+ * /v1/categories/byPoet/{poetId}:
  *   get:
  *     summary: List a poet's categories
  *     produces:
@@ -107,7 +107,7 @@ router.get('/categories/byPoet/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /poems/{poemId}:
+ * /v1/poems/{poemId}:
  *   get:
  *     summary: Show a poem and it's verses
  *     produces:
@@ -134,7 +134,7 @@ router.get('/poems/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /poems/byCategory/{categoryId}:
+ * /v1/poems/byCategory/{categoryId}:
  *   get:
  *     summary: Show poems inside a category
  *     produces:
