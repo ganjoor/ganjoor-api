@@ -13,13 +13,23 @@ export namespace Category {
         hierarchy: true,
         model: CategoryModel
       }]
+    }).then(result => {
+      if (result === null) {
+        return Promise.reject('Category has not been found.');
+      }
+      return result;
     });
   }
 
   export function findByPoetId(poetId: number) {
     return PoetModel
       .findById(poetId)
-      .then(result => findById(result.get('categoryId')));
+      .then(result => {
+        if (result === null) {
+          return Promise.reject('Poet has not been found.');
+        }
+        return findById(result.get('categoryId'));
+      });
   }
 }
 
@@ -37,6 +47,9 @@ export namespace Poet {
     return PoetModel
       .findById(id)
       .then(poet => {
+        if (poet === null) {
+          return Promise.reject('Poem has not been found.');
+        }
         const obj = poet.toJSON();
         return Category.findById(obj.categoryId)
           .then(category => {
@@ -56,6 +69,11 @@ export namespace Poem {
       include: [{
         model: VerseModel
       }]
+    }).then(result => {
+      if (result === null) {
+        return Promise.reject('Poem has not been found.');
+      }
+      return result;
     });
   }
 

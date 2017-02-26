@@ -1,4 +1,6 @@
 import * as express from 'express';
+import * as finalhandler from 'finalhandler';
+import { logger } from './utils/logger';
 import { router as swaggerRouter } from './swagger';
 import { router as poetryRouter } from './poetry';
 
@@ -16,6 +18,12 @@ app.get('/', (req, res) => {
 
 app.use(poetryRouter);
 app.use(swaggerRouter);
+
+app.use((err: any, req: any, res: any, next: any) => {
+  finalhandler(req, res, {
+    onerror: (loggedErr: any) => logger.error(loggedErr)
+  })(err);
+});
 
 let server: any;
 

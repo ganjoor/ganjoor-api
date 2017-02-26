@@ -48,5 +48,3 @@ const Poet = sequelize.define<PoetInstance, Poet>('poet', {
 
 export default Poet;
 export { PoetInstance };
-
-console.log('damn');
