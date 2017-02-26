@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import CategoryModel from './models/category';
 import PoetModel from './models/poet';
 
@@ -22,10 +23,27 @@ export namespace Category {
 
 export namespace Poet {
   export function findAll() {
-    return PoetModel.findAll();
+    return PoetModel.findAll()
+      .then(
+        result => result.map(
+          item => R.omit(['description'], item.toJSON())
+        )
+      );
   }
 
   export function findById(id: number) {
-    return PoetModel.findById(id);
+    return PoetModel
+      .findById(id)
+      .then(poet => {
+        const obj = poet.toJSON();
+        return Category.findById(obj.categoryId)
+          .then(category => {
+            const categories = category.toJSON();
+            return {
+              ...R.omit(['categoryId'], obj),
+              categories: categories.children
+            };
+          });
+      });
   }
 }

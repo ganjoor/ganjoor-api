@@ -29,6 +29,10 @@
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.5.tgz#96a0f0a618b7b606f1ec547403c00650210bfbb7"
 
+"@types/ramda@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.0.3.tgz#683a3437d4446a4d21af473a9286e6950fa777c1"
+
 "@types/serve-static@*":
   version "1.7.31"
   resolved "https://registry.yarnpkg.com/@types/serve-static/-/serve-static-1.7.31.tgz#15456de8d98d6b4cff31be6c6af7492ae63f521a"

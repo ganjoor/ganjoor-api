@@ -2,8 +2,9 @@ import * as Sequelize from 'sequelize';
 import { sequelize } from '../utils/db';
 
 interface Category {
-  id?: number;
-  name?: string;
+  id: number;
+  name: string;
+  children?: CategoryInstance[];
 }
 
 interface CategoryInstance extends Sequelize.Instance<CategoryInstance, Category> {

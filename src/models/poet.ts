@@ -2,10 +2,10 @@ import * as Sequelize from 'sequelize';
 import { sequelize } from '../utils/db';
 
 interface Poet {
-  id?: number;
-  categoryId?: number;
-  name?: string;
-  description?: string;
+  id: number;
+  categoryId: number;
+  name: string;
+  description: string;
 }
 
 interface PoetInstance extends Sequelize.Instance<PoetInstance, Poet> {
