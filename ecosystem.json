@@ -1,0 +1,21 @@
+{
+  "apps": [
+    {
+      "name": "Ganjoor API",
+      "script": "dist/bootstrap.js",
+      "env_production": {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "root",
+      "host": "46.101.174.74",
+      "ref": "origin/master",
+      "repo": "git@github.com:ganjoor/ganjoor-api.git",
+      "path": "/root/ganjoor-api",
+      "post-deploy": "npm install && npm run build && pm2 startOrRestart ecosystem.json --env production"
+    }
+  }
+}
