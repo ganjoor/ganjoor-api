@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "target": "es6",
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": [
+    "src/**/*",
+    "typings/**/*",
+    "test/**/*",
+    "scripts/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
