@@ -19,3 +19,13 @@ export namespace Category {
       .then(result => findById(result.get('categoryId')));
   }
 }
+
+export namespace Poet {
+  export function findAll() {
+    return PoetModel.findAll();
+  }
+
+  export function findById(id: number) {
+    return PoetModel.findById(id);
+  }
+}

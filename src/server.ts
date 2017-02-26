@@ -1,11 +1,21 @@
 import * as express from 'express';
-import { Category } from './entities';
+import { Category, Poet } from './entities';
 
 const app = express();
 app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
   res.json('OK');
+});
+
+app.get('/poets', (req, res) => {
+  Poet.findAll()
+    .then(result => res.json(result));
+});
+
+app.get('/poets/:id', (req, res) => {
+  Poet.findById(req.params.id)
+    .then(result => res.json(result));
 });
 
 app.get('/categories/:id', (req, res) => {
