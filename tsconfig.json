@@ -3,7 +3,7 @@
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "dist",
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "es6",
     "strictNullChecks": true,
     "noUnusedLocals": true,
