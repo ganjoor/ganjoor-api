@@ -9,6 +9,7 @@
     "watch:server": "nodemon --watch dist --delay 2 dist/bootstrap.js",
     "watch:build": "tsc -w",
     "build": "tsc",
+    "start:production": "node dist/bootstrap.js",
     "lint": "tslint -c tslint.json './src/**/*.ts'"
   },
   "dependencies": {
@@ -22,6 +23,8 @@
     "ramda": "^0.23.0",
     "sequelize": "^3.30.2",
     "sequelize-hierarchy": "^1.2.0",
+    "swagger-jsdoc": "^1.9.2",
+    "swagger-ui": "^2.2.10",
     "winston": "^2.3.1"
   },
   "devDependencies": {
@@ -31,8 +34,6 @@
     "@types/ramda": "^0.0.3",
     "@types/winston": "^2.2.0",
     "concurrently": "^3.3.0",
-    "swagger-jsdoc": "^1.9.2",
-    "swagger-ui": "^2.2.10",
     "tslint": "^4.4.2",
     "typescript": "^2.2.1",
     "typings": "^2.1.0"

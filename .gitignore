@@ -9,5 +9,4 @@ npm-debug.log
 .env
 newrelic_agent.log
 .npmrc
-typings
 ecosystem.json
