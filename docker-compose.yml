@@ -2,7 +2,7 @@ version: '2'
 
 services:
   api:
-    build: ./docker/api
+    build: ./
     restart: always
     environment:
       MYSQL_URL: mysql://root:root@mysql:3306/ganjoor
