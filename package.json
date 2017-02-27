@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "postinstall": "typings install",
     "dev": "concurrently \"npm run watch:build\" \"npm run watch:server\"",
     "watch:server": "nodemon --watch dist --delay 2 dist/bootstrap.js",
     "watch:build": "tsc -w",
