@@ -7,7 +7,7 @@ services:
     environment:
       MYSQL_URL: mysql://root:root@mysql:3306/ganjoor
     ports:
-      - "8080:4003"
+      - "4003:4003"
     links:
       - db:mysql
     depends_on:
