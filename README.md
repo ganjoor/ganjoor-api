@@ -29,6 +29,11 @@ $ docker-compose up -d
 
 Head to [http://localhost:4003/api-docs](http://localhost:4003/api-docs) to read the API documentation.
 
+## Sponsors
+
+![](http://cdn.auth0.com/oss/badges/a0-badge-dark.png)
+
+
 ## License
 
 This software is released under the [MIT License](LICENSE).
