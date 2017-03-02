@@ -14,7 +14,7 @@ services:
       - db
 
   db:
-    build: ./docker/db
+    image: ganjoor/ganjoor-db
     ports:
       - "3306:3306"
     environment:

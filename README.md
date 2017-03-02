@@ -9,8 +9,6 @@ $ yarn dev
 
 ## Docker Container
 
-First you need to download a dump of the database [from Dropbox](https://www.dropbox.com/s/13s6y0knwaaomjc/dump.sql?dl=0) and put it in `docker/db/` folder (it's ignored by Git).
-
 ``` bash
 $ yarn
 $ yarn build
