@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "concurrently \"npm run watch:build\" \"npm run watch:server\"",
+    "dev": "env-cmd .env concurrently \"npm run watch:build\" \"npm run watch:server\"",
     "watch:server": "nodemon --watch dist --delay 2 dist/bootstrap.js",
     "watch:build": "tsc -w",
     "build": "tsc",
@@ -16,6 +16,7 @@
     "cors": "^2.8.1",
     "debug": "^2.6.1",
     "dotenv": "^4.0.0",
+    "env-cmd": "^5.0.0",
     "express": "^4.14.1",
     "express-jwt": "^5.1.0",
     "finalhandler": "^1.0.0",
