@@ -1,5 +1,7 @@
 import * as express from 'express';
 import * as finalhandler from 'finalhandler';
+import * as cors from 'cors';
+import authenticate from './utils/auth';
 import { logger } from './utils/logger';
 import { router as swaggerRouter } from './swagger';
 import { router as poetryRouter } from './poetry';
@@ -7,6 +9,8 @@ import { router as poetryRouter } from './poetry';
 let startTime: number;
 
 const app = express();
+
+app.use(cors());
 app.disable('x-powered-by');
 
 app.get('/', (req, res) => {
@@ -16,7 +20,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/v1', poetryRouter);
+app.use('/v1', authenticate, poetryRouter);
 app.use(swaggerRouter);
 
 app.use((err: any, req: any, res: any, next: any) => {

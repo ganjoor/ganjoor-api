@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { connect as dbConnect } from './utils/db';
 import { start as startServer, stop as stopServer } from './server';
 

@@ -1,0 +1,229 @@
+swagger: '2.0'
+
+################################################################################
+#                              API Information                                 #
+################################################################################
+
+info:
+  title: Ganjoor API
+  version: 1.0.0
+basePath: /v1
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+  
+################################################################################
+#                                  Security                                    #
+################################################################################
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+
+################################################################################
+#                                           Paths                              #
+################################################################################
+paths:
+  '/poets':
+    get:
+      summary: List all poets
+      security:
+        - Bearer: []
+      tags:
+        - poets
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/PoetList'
+  '/poets/{poetId}':
+    get:
+      summary: Show a poet and it's categories
+      security:
+        - Bearer: []
+      tags:
+        - poets
+      parameters:
+        - name: poetId
+          description: 'Poet ID, for example "71678".'
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SinglePoet'
+  '/categories/{categoryId}':
+    get:
+      summary: Show a category
+      security:
+        - Bearer: []
+      tags:
+        - categories
+      parameters:
+        - name: categoryId
+          description: 'Category ID, for example "2030".'
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Category'
+  '/categories/byPoet/{poetId}':
+    get:
+      summary: List a poet's categories
+      security:
+        - Bearer: []
+      tags:
+        - categories
+      parameters:
+        - name: poetId
+          description: 'Poet ID, for example "71678".'
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/CategoryList'
+  '/poems/{poemId}':
+    get:
+      summary: Show a poem and it's verses
+      security:
+        - Bearer: []
+      tags:
+        - poems
+      parameters:
+        - name: poemId
+          description: 'Poem ID, for example "9827".'
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/SinglePoem'
+  '/poems/byCategory/{categoryId}':
+    get:
+      summary: Show poems inside a category
+      security:
+        - Bearer: []
+      tags:
+        - poems
+      parameters:
+        - name: categoryId
+          description: 'Category ID, for example "10".'
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/PoemList'
+
+################################################################################
+#                                  DEFINITIONS                                 #
+################################################################################
+definitions:
+  CategoryList:
+    type: array
+    items:
+      $ref: '#/definitions/Category'
+  Category:
+    type: object
+    properties:
+      id:
+        type: integer
+      parentId:
+        type: integer
+      name:
+        type: string
+      hierarchyLevel:
+        type: integer
+      children:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+  PoemList:
+    type: array
+    items:
+      $ref: '#/definitions/Poem'
+  Poem:
+    type: object
+    properties:
+      id:
+        type: integer
+      categoryId:
+        type: integer
+      title:
+        type: string
+  SinglePoem:
+    allOf:
+      - $ref: '#/definitions/Poem'
+      - properties:
+          verses:
+            type: array
+            items:
+              $ref: '#/definitions/Verse'
+  PoetList:
+    type: array
+    items:
+      $ref: '#/definitions/Poet'
+  Poet:
+    type: object
+    properties:
+      id:
+        type: integer
+      categoryId:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+  SinglePoet:
+    allOf:
+      - $ref: '#/definitions/Poet'
+      - properties:
+          categories:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+  Verse:
+    type: object
+    properties:
+      id:
+        type: integer
+      text:
+        type: string
+      order:
+        type: integer
+        description: Vertical Order
+      position:
+        type: integer
+        description: Horizontal Position
+
+################################################################################
+#                                           TAGS                               #
+################################################################################
+tags:
+  - name: poets
+    description: Poets
+  - name: poems
+    description: Poems
+  - name: categories
+    description: Categories
+    
