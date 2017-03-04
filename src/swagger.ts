@@ -1,28 +1,16 @@
 import * as express from 'express';
-const swaggerJSDoc = require('swagger-jsdoc');
+import * as yaml from 'js-yaml';
+import * as fs from 'fs';
+import * as path from 'path';
 const swaggerUiDistDir = require('swagger-ui/index').dist;
 
 export const router = express.Router();
-
-const options = {
-  swaggerDefinition: {
-    info: {
-      title: 'Ganjoor API',
-      version: '1.0.0'
-    }
-  },
-  apis: ['./dist/models/*.js', './dist/*.js'],
-  tags: [
-    { name: 'poets', description: 'Poets' },
-    { name: 'categories', description: 'Poet\'s Work Categories' },
-    { name: 'poems', description: 'Poems' }
-  ]
-};
-
-const swaggerDocument = swaggerJSDoc(options);
+const jsonDoc = yaml.safeLoad(
+  fs.readFileSync(path.join(__dirname, '../swagger.yaml')).toString('utf8')
+);
 
 router.get('/api-docs.json', (req, res) => {
-  res.json(swaggerDocument);
+  res.json(jsonDoc);
 });
 
 router.get('/api-docs', (req, res, next) => {
