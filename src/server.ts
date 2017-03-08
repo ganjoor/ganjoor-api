@@ -1,5 +1,4 @@
 import * as express from 'express';
-import * as finalhandler from 'finalhandler';
 import * as cors from 'cors';
 import authenticate from './utils/auth';
 import { logger } from './utils/logger';
@@ -24,9 +23,8 @@ app.use('/v1', authenticate, poetryRouter);
 app.use(swaggerRouter);
 
 app.use((err: any, req: any, res: any, next: any) => {
-  finalhandler(req, res, {
-    onerror: (loggedErr: any) => logger.error(loggedErr)
-  })(err);
+  logger.error(err);
+  res.status(err.code || 500).json(err.toJSON());
 });
 
 let server: any;

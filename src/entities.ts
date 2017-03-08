@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import * as errors from 'feathers-errors';
 import CategoryModel from './models/category';
 import PoetModel from './models/poet';
 import PoemModel from './models/poem';
@@ -15,7 +16,7 @@ export namespace Category {
       }]
     }).then(result => {
       if (result === null) {
-        return Promise.reject('Category has not been found.');
+        return Promise.reject(new errors.NotFound('Category does not exist'));
       }
       return result;
     });
@@ -26,7 +27,7 @@ export namespace Category {
       .findById(poetId)
       .then(result => {
         if (result === null) {
-          return Promise.reject('Poet has not been found.');
+          return Promise.reject(new errors.NotFound('Poet does not exist'));
         }
         return findById(result.get('categoryId'));
       });
@@ -48,7 +49,7 @@ export namespace Poet {
       .findById(id)
       .then(poet => {
         if (poet === null) {
-          return Promise.reject('Poem has not been found.');
+          return Promise.reject(new errors.NotFound('Poet does not exist'));
         }
         const obj = poet.toJSON();
         return Category.findById(obj.categoryId)
@@ -71,7 +72,7 @@ export namespace Poem {
       }]
     }).then(result => {
       if (result === null) {
-        return Promise.reject('Poem has not been found.');
+        return Promise.reject(new errors.NotFound('Poem does not exist'));
       }
       return result;
     });
