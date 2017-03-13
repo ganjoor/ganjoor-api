@@ -4,12 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "env-cmd .env concurrently \"npm run watch:build\" \"npm run watch:server\"",
-    "watch:server": "nodemon --watch dist --delay 2 dist/bootstrap.js",
-    "watch:build": "tsc -w",
+    "dev": "env-cmd .env nodemon --watch src --exec 'ts-node' src/bootstrap.ts",
     "build": "tsc",
     "start:production": "node dist/bootstrap.js",
-    "lint": "tslint -c tslint.json './src/**/*.ts'"
+    "lint": "tslint -c tslint.json './src/**/*.ts'",
+    "test": "npm run lint"
   },
   "dependencies": {
     "body-parser": "^1.16.1",
@@ -40,6 +39,7 @@
     "@types/ramda": "^0.0.3",
     "@types/winston": "^2.2.0",
     "concurrently": "^3.3.0",
+    "ts-node": "^2.1.0",
     "tslint": "^4.4.2",
     "typescript": "^2.2.1",
     "typings": "^2.1.0"
