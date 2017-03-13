@@ -4,6 +4,8 @@ machine:
     CLOUDSDK_CORE_DISABLE_PROMPTS: 1
   services:
     - docker
+  node:
+    version: v6.1.0
 dependencies:
   pre:
     - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
