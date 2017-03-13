@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ganjoor-api
+  labels:
+    app: ganjoor-api
+    team: Ganjoor
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 4003
+    targetPort: 4003
+    name: http
+  selector:
+    app: ganjoor-api

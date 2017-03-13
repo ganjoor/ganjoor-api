@@ -1,0 +1,30 @@
+machine:
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+    CLOUDSDK_CORE_DISABLE_PROMPTS: 1
+  services:
+    - docker
+dependencies:
+  pre:
+    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
+    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update kubectl
+    - sudo chown -R ubuntu:ubuntu /home/ubuntu/.config/gcloud
+  override:
+    - bash ./ci.sh setup-gcloud
+compile:
+  override:
+    - bash ./ci.sh build
+test:
+  override:
+    - bash ./ci.sh run-tests
+deployment:
+  # Deploy prod branch for production environment
+  prod:
+    branch: prod
+    commands:
+      - bash ./ci.sh deploy
+  # Deploy master branch for development environment
+  dev:
+    branch: master
+    commands:
+      - bash ./ci.sh deploy

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ganjoor-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ganjoor-api
+        team: Ganjoor
+    spec:
+      containers:
+      - name: ganjoor-api
+        image: gcr.io/ganjoor-net/ganjoor-api:latest
+        ports:
+        - containerPort: 4003
