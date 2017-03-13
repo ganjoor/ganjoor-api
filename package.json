@@ -7,7 +7,8 @@
     "dev": "env-cmd .env nodemon --watch src --exec 'ts-node' src/bootstrap.ts",
     "build": "tsc",
     "start:production": "node dist/bootstrap.js",
-    "lint": "tslint -c tslint.json './src/**/*.ts'"
+    "lint": "tslint -c tslint.json './src/**/*.ts'",
+    "test": "npm run lint"
   },
   "dependencies": {
     "body-parser": "^1.16.1",
