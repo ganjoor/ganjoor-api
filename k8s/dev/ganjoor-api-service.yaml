@@ -6,7 +6,7 @@ metadata:
     app: ganjoor-api
     team: Ganjoor
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 4003
     targetPort: 4003
