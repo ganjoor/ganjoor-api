@@ -1,4 +1,5 @@
 # Ganjoor API
+[![CircleCI](https://circleci.com/gh/ganjoor/ganjoor-api.svg?style=svg)](https://circleci.com/gh/ganjoor/ganjoor-api)
 
 ## Development
 
