@@ -18,7 +18,7 @@
     "env-cmd": "^5.0.0",
     "express": "^4.14.1",
     "express-jwt": "^5.1.0",
-    "feathers-errors": "^2.6.1",
+    "feathers-errors": "^2.6.2",
     "joi": "^10.2.2",
     "js-yaml": "^3.8.2",
     "morgan": "^1.8.1",
