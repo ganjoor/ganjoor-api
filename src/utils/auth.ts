@@ -2,7 +2,7 @@ import * as jwt from 'express-jwt';
 
 let middleware;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development' || process.env.BYPASS_AUTH === 'yes') {
   middleware = (req: any, res: any, next: any) => next();
 } else {
   middleware = jwt({
