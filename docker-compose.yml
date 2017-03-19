@@ -6,6 +6,7 @@ services:
     restart: always
     environment:
       MYSQL_URL: mysql://root:root@mysql:3306/ganjoor
+      NODE_ENV: development
       BYPASS_AUTH: "yes"
     ports:
       - "4003:4003"
