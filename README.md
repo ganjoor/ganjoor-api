@@ -1,7 +1,7 @@
 # Ganjoor API
 [![CircleCI](https://circleci.com/gh/ganjoor/ganjoor-api.svg?style=svg)](https://circleci.com/gh/ganjoor/ganjoor-api)
 
-## Development
+## Local Development
 
 Create `.env` file in the root with this contents:
 
@@ -19,7 +19,9 @@ $ yarn
 $ yarn dev
 ```
 
-## Docker Container
+## Development Docker
+
+If you just want to run a docker container locally to host the API and the Database for you:
 
 ``` bash
 $ yarn
@@ -35,6 +37,13 @@ At that point you can head to [http://localhost:4003/](http://localhost:4003/) t
 
 ``` bash
 $ docker-compose up -d
+```
+
+## Production Docker
+
+``` bash
+$ docker build ganjoor-api .
+$ docker run ganjoor-api --env AUTH0_DOMAIN=... --env AUTH0_CLIENT_ID=... --env AUTH0_CLIENT_SECRET=...
 ```
 
 ## API Documentation

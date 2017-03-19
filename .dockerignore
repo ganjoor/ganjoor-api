@@ -1,2 +1,4 @@
-.git/**
-src/**
+*/.git*
+*/dist*
+*/k8s*
+*/node_modules*
