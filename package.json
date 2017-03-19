@@ -1,7 +1,7 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/bootstrap.js",
   "license": "MIT",
   "scripts": {
     "dev": "env-cmd .env nodemon --watch src --exec 'ts-node' src/bootstrap.ts",
