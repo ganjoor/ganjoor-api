@@ -6,7 +6,7 @@ COPY yarn.lock /data/ganjoor-api/
 COPY src/ /data/ganjoor-api/src
 COPY typings/ /data/ganjoor-api/typings
 
-RUN cd /data/ganjoor-api && yarn
+RUN cd /data/ganjoor-api && yarn --pure-lockfile
 RUN cd /data/ganjoor-api && yarn build
 
 EXPOSE 4003
