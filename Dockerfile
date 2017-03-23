@@ -1,10 +1,13 @@
 FROM node:7
 
-COPY package.json /data/ganjoor-api/package.json
-COPY node_modules/ /data/ganjoor-api/node_modules
-RUN cd /data/ganjoor-api && npm prune --production=true
+COPY *.json /data/ganjoor-api/
+COPY *.yaml /data/ganjoor-api/
+COPY yarn.lock /data/ganjoor-api/
+COPY src/ /data/ganjoor-api/src
+COPY typings/ /data/ganjoor-api/typings
 
-COPY dist/ /data/ganjoor-api/dist
+RUN cd /data/ganjoor-api && yarn --pure-lockfile
+RUN cd /data/ganjoor-api && yarn build
 
 EXPOSE 4003
 
