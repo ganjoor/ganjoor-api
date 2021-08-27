@@ -1,3 +1,7 @@
+This project is not maintained and supported and is kept for archival purposes and possible maintainable forks.
+As an alternative you may take a look at:
+[GanjoorService](https://github.com/ganjoor/GanjoorService)
+
 # Ganjoor API
 [![CircleCI](https://circleci.com/gh/ganjoor/ganjoor-api.svg?style=svg)](https://circleci.com/gh/ganjoor/ganjoor-api)
 
